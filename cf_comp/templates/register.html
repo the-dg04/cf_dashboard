@@ -1,5 +1,18 @@
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type = 'submit'>Sign Up</button>
-</form>
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+<div class="form-container">
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-labels">Username</div>
+        <div class="form-field">{{form.username}}</div>
+        <div class="form-labels">Password</div>
+        <div class="form-field">{{form.password1}}</div>
+        <div class="form-labels">Confirm Password</div>
+        <div class="form-field">{{form.password2}}</div>
+        <button type = 'submit'>Sign Up</button>
+    </form>
+</div>
+{% endblock content %}
