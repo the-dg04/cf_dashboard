@@ -19,7 +19,7 @@ def register(request):
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
                 form.save()
-                return redirect('/')
+                return redirect(f'/user/{username}')
             else:
                 messages.error(request,'Bad request')
                 return redirect('/register')
