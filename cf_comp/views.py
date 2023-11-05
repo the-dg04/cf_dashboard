@@ -1,3 +1,3 @@
 from django.shortcuts import render
 def home(request):
-    return render(request,"main.html")
+    return render(request,"getStarted.html")
