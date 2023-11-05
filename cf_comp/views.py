@@ -28,6 +28,10 @@ def userRedirect(request):
         return redirect(f'/user/{usernameOrNull}/submissions')
     else:
         return redirect('/login')
+def logout(request):
+    response=redirect('/')
+    response.delete_cookie('username')
+    return response
 
 def userSubmissions(request,username):
     if(not isLoggedIn(request)):
