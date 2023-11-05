@@ -4,7 +4,11 @@
     <div class="container">
         <h1 class="display-3" style="color: rgb(248, 240, 240);">CF Dashboard</h1>
         <p class="card-text" style="font-size: 25px; color: rgb(248, 240, 240);">Die</p>
-        <p><a class="btn btn-primary btn-lg" href="/register" role="button">Get Started &raquo;</a></p>
+        {% if isLoggedIn %}
+            <p><a class="btn btn-primary btn-lg" href="/user" role="button">Go to home &raquo;</a></p>
+        {% else %}
+            <p><a class="btn btn-primary btn-lg" href="/register" role="button">Get Started &raquo;</a></p>
+        {% endif %}
     </div>
 </div>
 <section class="ingredient-section">

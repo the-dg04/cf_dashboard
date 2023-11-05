@@ -48,7 +48,11 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/search/1">Dashboard</a>
-        <a class="nav-item nav-link" href="/login">Login</a>
+        {% if isLoggedIn %}
+        <a id="login-logout" class="nav-item nav-link" href="/logout">logout</a>
+        {% else %}
+        <a id="login-logout" class="nav-item nav-link" href="/login">login</a>
+        {% endif %}
       </div>
     </div>
   </nav>
