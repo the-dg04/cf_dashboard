@@ -73,7 +73,7 @@ def view_friends(request):
     if(not username):
         return redirect('/login')
     friendsObject=Friends.objects.filter(friend_of=User.objects.get(username=isLoggedIn(request)))
-    return render(request,'viewFriends.html',{'friendsList':friendsObject})
+    return render(request,'viewFriends.html',{'friendsList':friendsObject,'isLoggedIn':isLoggedIn(request)})
 
 def is_friend(request,friend_username):
     username=isLoggedIn(request)
@@ -85,8 +85,16 @@ def is_friend(request,friend_username):
     except:
         return False
 
+def is_user(username):
+    try:
+        q=User.objects.get(username=username)
+        return True
+    except:
+        return False
+
 def userProfile(request,username):
     if request.method == 'POST':
         add_friend(request,username)
+    if(not is_user(username)):
+        return redirect('/')
     return render(request,'userProfile.html',{'username':username,"isNotFriend":not is_friend(request,username),'isLoggedIn':getLoginStatus(request)})
-
