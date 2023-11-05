@@ -1,0 +1,6 @@
+{% extends 'main.html' %}
+{% block content %}
+{% for i in friendsList %}
+<div><a href="/user/{{i.friend}}">{{ i.friend }}</a></div>
+{% endfor %}
+{% endblock content %}
