@@ -13,7 +13,8 @@
       </div>
   
       <!-- Login Form -->
-      <form>
+      <form method="POST">
+        {% csrf_token %}
         <div class="form-label">CF Username</div>
         <div class="form-field">{{form.username}}</div>
         <div class="form-label">Password</div>

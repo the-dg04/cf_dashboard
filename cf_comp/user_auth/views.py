@@ -19,8 +19,8 @@ def register(request):
                 form.save()
                 return redirect('/')
             else:
-                messages.warning(request,"Invalid CF handle")
-                # return render(request,"register.html",{'form':form})
+                messages.error(request,'Bad request')
+                return redirect('/register')
     else:
         form = UserCreationForm()
     return render(request,"register.html",{'form':form})
