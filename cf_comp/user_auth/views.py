@@ -16,8 +16,8 @@ def register(request):
             username = form.cleaned_data.get('username')
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
-                return redirect('/')
                 form.save()
+                return redirect('/')
             else:
                 messages.warning(request,"Invalid CF handle")
                 # return render(request,"register.html",{'form':form})
