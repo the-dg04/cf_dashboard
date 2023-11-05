@@ -53,3 +53,13 @@ def userSubmissions(request,username):
         'y':list(rating_dict.values())
     }
     return render(request,"submissions.html",{'sub':sub[:10],'data':data})
+
+def add_friend(request):
+    if request.method == 'POST':
+        form = FriendForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save the form data to the database
+            return redirect('#')  # Redirect to a page displaying friends
+    else:
+        form = FriendForm()
+    return render(request, 'add_friend.html', {'form': form})

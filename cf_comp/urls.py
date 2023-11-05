@@ -8,5 +8,6 @@ urlpatterns=[
     path("login/",view1.login),
     path('user/',views.userRedirect),
     path('user/<str:username>/submissions',views.userSubmissions),
-    path('logout/',views.logout)
+    path('logout/',views.logout),
+    path('friends/', views.add_friend, name='add_friend')
 ]
