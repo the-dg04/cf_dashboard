@@ -1,42 +1,45 @@
+{% extends 'main.html' %}
+{% block content %}
+
 {% load static %}
 
 {% for sub_it in sub %}
-    <div>{{ sub_it.name }}</div>
+<div>{{ sub_it.name }}</div>
 {% endfor %}
 <!-- <h1>hello</h1> -->
 <!-- {% for rating_it in ratings %}
     <div>{{ rating_it }}</div>
-{% endfor %} -->
-
-<div>
-    <canvas id="myChart" ></canvas>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <script>
-    const ctx = document.getElementById('myChart');
-  
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: {{data.x|safe}},
-        datasets: [{
-          label: 'No. of problems',
-          data: {{ data.y|safe }},
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+    {% endfor %} -->
+    
+    <div>
+        <canvas id="myChart" ></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        const ctx = document.getElementById('myChart');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{data.x|safe}},
+                datasets: [{
+                    label: 'No. of problems',
+                    data: {{ data.y|safe }},
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
     });
-    console.log("{{labels}}")
-    console.log("{{values}}")
-  </script>
+    </script>
   
 
+  
+  {% endblock content %}
