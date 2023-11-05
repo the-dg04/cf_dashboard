@@ -10,6 +10,6 @@ urlpatterns=[
     path('user/<str:username>/',views.userProfile),
     path('user/<str:username>/submissions/',views.userSubmissions),
     path('logout/',views.logout),
-    # path('friends/', views.add_friend, name='add_friend'),
+    path('dashboard/',views.dashboard),
     path('friends/all/', views.view_friends),
 ]
