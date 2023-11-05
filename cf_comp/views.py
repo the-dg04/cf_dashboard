@@ -111,7 +111,7 @@ def pred(request,tag):
     username=isLoggedIn(request)
     if(not username):
         return redirect('/login')
-    return render(request,'gen_ques.html',gen(username,tag))
+    return render(request,'gen_ques.html',{'qu':gen(username,tag)})
 
 def ladderPage(request):
     username=isLoggedIn(request)
