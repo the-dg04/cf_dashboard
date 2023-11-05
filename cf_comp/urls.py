@@ -4,5 +4,6 @@ from .user_auth import views as view1
 
 urlpatterns=[
     path("",views.home),
-    path("register/",view1.register)
+    path("register/",view1.register),
+    path("submissions/",views.submissions)
 ]
