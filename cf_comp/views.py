@@ -1,4 +1,3 @@
-from django.shortcuts import render,HttpResponse
-
+from django.shortcuts import render
 def home(request):
     return render(request,"getStarted.html")
