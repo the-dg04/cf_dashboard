@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/register.css' %}">
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active">Login </h2>
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img width="50" height="50" src="https://img.icons8.com/ios/50/user--v1.png" alt="user--v1"/>
+      </div>
+  
+      <!-- Login Form -->
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-label">CF Username</div>
+        <div class="form-field">{{form.username}}</div>
+        <div class="form-label">Password</div>
+        <div class="form-field">{{form.password}}</div>
+        <input type="submit" class="fadeIn fourth" value="Login">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
+{% endblock content %}

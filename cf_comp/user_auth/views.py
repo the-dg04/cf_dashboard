@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 from cf_comp.forms import UserRegisterForm
+from cf_comp.forms import LoginForm
 import requests
 
 def isValid(username):
@@ -24,3 +26,21 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request,"register.html",{'form':form})
+
+def login(request):
+    if request.method=='POST':
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data.get('username')
+            password=form.cleaned_data.get('password')
+            try:
+                m=User.objects.get(username=username)
+                if m.check_password(password):
+                    return redirect(f'/user/{username}')
+                else:
+                    return redirect('/login')
+            except:
+                return redirect('/login')
+    else:
+        form=LoginForm()
+        return render(request,"login.html",{'form':form})
