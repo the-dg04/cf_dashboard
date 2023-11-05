@@ -99,6 +99,14 @@ def userProfile(request,username):
     if(not is_user(username)):
         return redirect('/')
     return render(request,'userProfile.html',{'username':username,"isNotFriend":not is_friend(request,username),'isLoggedIn':getLoginStatus(request)})
+
+def dashboard(request):
+    username=isLoggedIn(request)
+    if(not username):
+        return redirect('/login')
+    else:
+        return redirect(f"/user/{username}/submissions")
+    
 def pred(request,username,tag):
     return render(request,'gen_ques.html',{'qu':gen(username,tag)})
     
