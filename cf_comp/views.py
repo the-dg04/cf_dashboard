@@ -108,5 +108,5 @@ def dashboard(request):
         return redirect(f"/user/{username}/submissions")
     
 def pred(request,username,tag):
-    return render(request,'gen_ques.html',gen(username,tag))
+    return render(request,'gen_ques.html',{'qu':gen(username,tag)})
     
