@@ -14,3 +14,6 @@ class FriendForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     username=forms.CharField()
+
+class SearchTag(forms.Form):
+    tag=forms.CharField()

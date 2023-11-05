@@ -1,4 +1,4 @@
-from api_calls.api_func import status,problem
+from .api_calls.api_func import status,problem
 
 def gen(username,tag):
     a = status(username)
@@ -49,4 +49,3 @@ def gen(username,tag):
             # print(s1)
 # print(gen('nikhiltotla','dp'))
 # print(problem('dp',1700)[0])
-

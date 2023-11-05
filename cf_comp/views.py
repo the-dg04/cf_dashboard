@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect,redirect
 from cf_comp.api_calls.api_func import status
-from .forms import FriendForm,SearchForm
+from .forms import FriendForm,SearchForm,SearchTag
 from .models import Friends,User
 from .ladder import gen
 
@@ -107,6 +107,21 @@ def dashboard(request):
     else:
         return redirect(f"/user/{username}/submissions")
     
-def pred(request,username,tag):
+def pred(request,tag):
+    username=isLoggedIn(request)
+    if(not username):
+        return redirect('/login')
     return render(request,'gen_ques.html',gen(username,tag))
+
+def ladderPage(request):
+    username=isLoggedIn(request)
+    if(not username):
+        return redirect('/login')
+    if(request.method=='POST'):
+        form=SearchTag(request.POST)
+        if form.is_valid():
+            return redirect(f'/ladder/{form.cleaned_data["tag"]}')
+    form=SearchTag()
+    return render(request,'ladder_generator.html',{'form':form})
+    
     

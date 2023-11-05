@@ -12,4 +12,6 @@ urlpatterns=[
     path('logout/',views.logout),
     path('dashboard/',views.dashboard),
     path('friends/all/', views.view_friends),
+    path('ladder/<str:tag>',views.pred),
+    path('ladder/',views.ladderPage)
 ]
