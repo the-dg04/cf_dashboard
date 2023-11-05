@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect,redirect
 from cf_comp.api_calls.api_func import status
 from .forms import FriendForm,SearchForm
 from .models import Friends,User
+from .ladder import gen
 
 def isLoggedIn(request):
     try:
@@ -98,3 +99,6 @@ def userProfile(request,username):
     if(not is_user(username)):
         return redirect('/')
     return render(request,'userProfile.html',{'username':username,"isNotFriend":not is_friend(request,username),'isLoggedIn':getLoginStatus(request)})
+def pred(request,username,tag):
+    return render(request,'gen_ques.html',gen(username,tag))
+    
