@@ -6,7 +6,7 @@ urlpatterns=[
     path("",views.home),
     path("register/",view1.register),
     path("login/",view1.login),
-    path('user/<str:username>',views.userPage),
+    path('user/',views.userRedirect),
     path('user/<str:username>/submissions',views.userSubmissions),
-    path('user/<str:username>/friends', views.add_friend)
+    path('logout/',views.logout)
 ]

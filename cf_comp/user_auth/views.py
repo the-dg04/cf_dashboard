@@ -19,7 +19,9 @@ def register(request):
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
                 form.save()
-                return redirect(f'/user/{username}')
+                response=redirect(f'/user/{username}')
+                response.set_cookie('username',username)
+                return response
             else:
                 messages.error(request,'Bad request')
                 return redirect('/register')
@@ -36,7 +38,9 @@ def login(request):
             try:
                 m=User.objects.get(username=username)
                 if m.check_password(password):
-                    return redirect(f'/user/{username}')
+                    response=redirect(f'/user/{username}')
+                    response.set_cookie('username',username)
+                    return response
                 else:
                     return redirect('/login')
             except:
