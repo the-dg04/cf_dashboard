@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import messages
-from cf_comp.forms import UserRegisterForm
 from cf_comp.forms import LoginForm
 import requests
 
@@ -38,7 +37,7 @@ def login(request):
             try:
                 m=User.objects.get(username=username)
                 if m.check_password(password):
-                    response=redirect(f'/user/{username}')
+                    response=redirect(f'/user/{username}/submissions')
                     response.set_cookie('username',username)
                     return response
                 else:
