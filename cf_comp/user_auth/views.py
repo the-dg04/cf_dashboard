@@ -13,7 +13,6 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get('username')
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
@@ -21,6 +20,7 @@ def register(request):
             else:
                 messages.warning(request,"Invalid CF handle")
                 # return render(request,"register.html",{'form':form})
+            form.save()
     else:
         form = UserCreationForm()
     return render(request,"register.html",{'form':form})
