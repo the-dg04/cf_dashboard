@@ -13,3 +13,6 @@ def home(request):
 
 def userPage(request,username):
     return HttpResponse(f'hello : {username}')
+
+def userSubmissions(request,username):
+    return HttpResponse(f'submissions {username}')
