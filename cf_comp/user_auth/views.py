@@ -17,10 +17,10 @@ def register(request):
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
                 return redirect('/')
+                form.save()
             else:
                 messages.warning(request,"Invalid CF handle")
                 # return render(request,"register.html",{'form':form})
-            form.save()
     else:
         form = UserCreationForm()
     return render(request,"register.html",{'form':form})
