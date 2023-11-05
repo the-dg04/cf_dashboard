@@ -1,5 +1,6 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,redirect
 from cf_comp.api_calls.api_func import status
+from .forms import FriendForm
 
 def isLoggedIn(request):
     try:
@@ -52,9 +53,3 @@ def userSubmissions(request,username):
         'y':list(rating_dict.values())
     }
     return render(request,"submissions.html",{'sub':sub[:10],'data':data})
-
-def logout(request):
-    response=redirect('/')
-    response.delete_cookie('username')
-    return response
-
