@@ -100,5 +100,5 @@ def userProfile(request,username):
         return redirect('/')
     return render(request,'userProfile.html',{'username':username,"isNotFriend":not is_friend(request,username),'isLoggedIn':getLoginStatus(request)})
 def pred(request,username,tag):
-    return render(request,'gen_ques.html',gen(username,tag))
+    return render(request,'gen_ques.html',{'qu':gen(username,tag)})
     

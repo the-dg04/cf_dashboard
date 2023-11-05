@@ -1,4 +1,4 @@
-from api_calls.api_func import status,problem
+from .api_calls.api_func import status,problem
 
 def gen(username,tag):
     a = status(username)
