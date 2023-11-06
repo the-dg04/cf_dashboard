@@ -111,7 +111,8 @@ def pred(request,tag):
     username=isLoggedIn(request)
     if(not username):
         return redirect('/login')
-    return render(request,'gen_ques.html',{'qu':gen(username,tag)})
+    ques=gen(username,tag)[:20]
+    return render(request,'gen_ques.html',{'qu':ques,'isLoggedIn':getLoginStatus(request)})
 
 def ladderPage(request):
     username=isLoggedIn(request)
@@ -122,6 +123,6 @@ def ladderPage(request):
         if form.is_valid():
             return redirect(f'/ladder/{form.cleaned_data["tag"]}')
     form=SearchTag()
-    return render(request,'ladder_generator.html',{'form':form})
+    return render(request,'ladder_generator.html',{'form':form,'isLoggedIn':getLoginStatus(request)})
     
     

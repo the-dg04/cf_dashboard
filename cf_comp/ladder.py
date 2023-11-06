@@ -45,7 +45,9 @@ def gen(username,tag):
                         except:
                             continue
     # return int(round(z/total,-2))
-    return problem(b,z/total)
+    if(not total):
+        return []
+    return problem(b,int(round(z/total,-2)))
             # print(s1)
-# print(gen('nikhiltotla','dp'))
+print(gen('nikhiltotla','dp'))
 # print(problem('dp',1700)[0])

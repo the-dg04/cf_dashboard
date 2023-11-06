@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+{% if qu %}
+<ul>
+{% for ques in qu %}
+    <li>
+        <a href="https://codeforces.com/problemset/problem/{{ques.contest}}/{{ques.index}}">{{ques.name}}</a>    
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+No questions available
+{% endif %}
+{% endblock content %}
