@@ -38,7 +38,13 @@ def logout(request):
 def userSubmissions(request,username):
     if(not isLoggedIn(request)):
        return redirect('/login')
+    if(request.method=="POST"):
+        form=SearchForm(request.POST)
+        if form.is_valid():
+            return redirect(f"/user/{form.cleaned_data['username']}")
+        return redirect('/dashboard')
     sub = status(username)
+    form=SearchForm()
     ratings=[]
     for i in sub:
         try:
@@ -58,7 +64,7 @@ def userSubmissions(request,username):
         'x':list(rating_dict.keys()),
         'y':list(rating_dict.values())
     }
-    return render(request,"submissions.html",{'sub':sub[:10],'data':data,'isLoggedIn':getLoginStatus(request)})
+    return render(request,"submissions.html",{'sub':sub[:10],'data':data,'form':form,'isLoggedIn':getLoginStatus(request)})
 
 def add_friend(request,username):
             try:
@@ -112,7 +118,7 @@ def pred(request,tag):
     if(not username):
         return redirect('/login')
     ques=gen(username,tag)[:20]
-    return render(request,'gen_ques.html',{'qu':ques,'isLoggedIn':getLoginStatus(request)})
+    return render(request,'gen_ques.html',{'qu':ques,'tag':tag,'isLoggedIn':getLoginStatus(request)})
 
 def ladderPage(request):
     username=isLoggedIn(request)

@@ -2,44 +2,68 @@
 {% block content %}
 
 {% load static %}
-
-{% for sub_it in sub %}
-<div>{{ sub_it.name }}</div>
-{% endfor %}
-<!-- <h1>hello</h1> -->
-<!-- {% for rating_it in ratings %}
-    <div>{{ rating_it }}</div>
-    {% endfor %} -->
-    
-    <div>
-        <canvas id="myChart" ></canvas>
+<link rel="stylesheet" href="{% static 'styles/tableStyles.css' %}">
+    <div style="position:relative">  
+        <div>
+            <table class="styled-table">
+                <tr>
+                    <th>Find User</th>
+                </tr>
+                <form method="post">
+                    {% csrf_token %}
+                    <tr><td>{{form.username}}<button type="submit" >Search</button>
+                    </td></tr>
+                </form>
+            </table>
+        </div>  
+<br>
+    <div style="position: relative;width:300px">
+        <table class="styled-table">
+            <tr><th>Recent Submissions</th></tr>
+            <tr>
+                <td>  
+                    {% for sub_it in sub %}
+                    <div>{{ sub_it.name }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script>
-        const ctx = document.getElementById('myChart');
+</div>
+    <!-- <h1>hello</h1> -->
+    <!-- {% for rating_it in ratings %}
+        <div>{{ rating_it }}</div>
+        {% endfor %} -->
         
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: {{data.x|safe}},
-                datasets: [{
-                    label: 'No. of problems',
-                    data: {{ data.y|safe }},
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        <div>
+            <canvas id="myChart" ></canvas>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+            const ctx = document.getElementById('myChart');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{data.x|safe}},
+                    datasets: [{
+                        label: 'No. of problems',
+                        data: {{ data.y|safe }},
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-    });
-    </script>
+            });
+            </script>
   
-
+  
   
   {% endblock content %}

@@ -1,6 +1,13 @@
 {% extends 'main.html' %}
 {% block content %}
-{% for i in friendsList %}
-<div><a href="/user/{{i.friend}}">{{ i.friend }}</a></div>
-{% endfor %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/tableStyles.css' %}">
+<table class="styled-table">
+    <tr><th>Friends</th></tr>
+    <tr><td>
+        {% for i in friendsList %}
+        <div><a href="/user/{{i.friend}}">{{ i.friend }}</a></div>
+        {% endfor %}
+    </td></tr>
+</table>
 {% endblock content %}

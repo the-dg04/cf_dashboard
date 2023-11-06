@@ -1,13 +1,19 @@
 {% extends 'main.html' %}
 {% block content %}
 {% if qu %}
-<ul>
-{% for ques in qu %}
-    <li>
-        <a href="https://codeforces.com/problemset/problem/{{ques.contest}}/{{ques.index}}">{{ques.name}}</a>    
-    </li>
-    {% endfor %}
-</ul>
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/tableStyles.css' %}">
+<table class="styled-table">
+    <tr><th>Generated Questions: {{tag}}</th></tr>
+    <tr><td>
+        {% for ques in qu %}
+        <div>
+            <a href="https://codeforces.com/problemset/problem/{{ques.contest}}/{{ques.index}}">{{ques.name}}</a>    
+        </div>
+        {% endfor %}
+    </td></tr>
+</table>
+
 {% else %}
 No questions available
 {% endif %}

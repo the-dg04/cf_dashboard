@@ -1,13 +1,25 @@
 {% extends 'main.html' %}
 {% block content %}
-{{username}}
-
-{% if isNotFriend %}
-<form method="post">
-    {% csrf_token %}
-    <input type="submit" value="Add Friend">
-</form>
-{% else %}
-<span style="color: red;">Friend</span>
-{% endif %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'styles/tableStyles.css' %}">
+<table class="styled-table">
+    <tr>
+        <th>
+            <div style="display: flex;">
+                {{username}}
+                {% if isNotFriend %}
+                    <form method="post" style="margin-left: 10px;">
+                        {% csrf_token %}
+                        <input type="submit" value="Add Friend">
+                    </form>
+                {% else %}
+                    <span style="color: red;margin-left: 10px;">Friend</span>
+                {% endif %}
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <td><a href="/user/{{username}}/submissions">View submissions ></a></td>
+    </tr>
+</table>
 {% endblock content %}
