@@ -1,18 +1,14 @@
-/* Ingredient page css style */
 
-/* banner background */
 .jumbotron{
   background-image: url("https://cdn.mos.cms.futurecdn.net/Xiwd2xvSftAFk3e2gqwr2G.jpg");
   height: 80vh;
 
-  /* Center and scale the image nicely */
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
 
-/* Ingredient section */
 .about-section{
   padding: 10px 50px;
   margin-left: 20px;

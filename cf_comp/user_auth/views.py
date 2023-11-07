@@ -18,7 +18,7 @@ def register(request):
             if(isValid(username)):
                 messages.success(request, f'Account created for {username}!')
                 form.save()
-                response=redirect(f'/user/{username}')
+                response=redirect(f'/dashboard')
                 response.set_cookie('username',username)
                 return response
             else:

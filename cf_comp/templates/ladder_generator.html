@@ -4,15 +4,12 @@
 <link rel="stylesheet" href="{% static 'styles/register.css' %}">
 <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Tabs Titles -->
-      <h2 class="active">Login </h2>
+      <h2 class="active">Tag</h2>
   
-      <!-- Icon -->
       <div class="fadeIn first">
         <img width="50" height="50" src="https://img.icons8.com/ios/50/price-tag--v1.png" alt="price-tag--v1"/>
       </div>
   
-      <!-- Login Form -->
       <form method="POST">
         {% csrf_token %}
         <div class="form-label">Tag</div>
@@ -20,7 +17,6 @@
         <input type="submit" class="fadeIn fourth" value="Generate">
       </form>
   
-      <!-- Remind Passowrd -->
   
     </div>
   </div>

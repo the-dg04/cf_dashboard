@@ -23,7 +23,6 @@ def home(request):
 def userPage(request,username):
     return HttpResponse(f'hello : {username}')
 
-# def getRatingsFromSubmissions()
 def userRedirect(request):
     usernameOrNull=isLoggedIn(request)
     if(usernameOrNull):
