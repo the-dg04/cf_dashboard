@@ -47,4 +47,3 @@ def gen(username,tag):
     if(not total):
         return []
     return problem(b,int(round(z/total,-2))+100)
-print(gen('nikhiltotla','dp'))
